@@ -68,7 +68,7 @@ const CollectionPage = observer(() => {
                 <Card.Body>
                     <Card.Text>
                         {
-                            props.map( prop =>
+                            props && props.map( prop =>
                                 <Button className="mx-3" variant="info">{prop.name}</Button>
                             )
                         }
