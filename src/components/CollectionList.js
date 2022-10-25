@@ -45,7 +45,7 @@ const CollectionList = ({collections, title = 'Collections list', userId}) => {
                         ?   <tr>
                                 <td colSpan="6">
                                     <Alert key="info" variant="info">
-                                        Collections not found
+                                        <FormattedMessage id='collections.not.found' />
                                     </Alert>
                                 </td>
                             </tr>

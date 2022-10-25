@@ -6,8 +6,8 @@ import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../constants/consts.js";
 import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {login, registration} from "../http/userAPI.js";
 import {Context} from "../index.js";
-import {SHOP_ROUTE} from "../constants/consts.js";
 import {MAIN_ROUTE} from "../constants/consts";
+import { FormattedMessage } from 'react-intl'
 
 const AuthPage = () => {
     const {user} = useContext(Context)
@@ -40,17 +40,21 @@ const AuthPage = () => {
             style={{height: window.innerHeight - 54}}
         >
             <Card style={{width: 600}} className="p-5">
-                <h2 className="m-auto">{isLogin ? 'Authorization' : "Registration"}</h2>
+                <h2 className="m-auto">
+                    {   isLogin
+                        ? <FormattedMessage id='auth.page.authorization' />
+                        : <FormattedMessage id='auth.page.registration' />
+                    }</h2>
                 <Form className="d-flex flex-column">
                     <Form.Control
                         className="mt-3"
-                        placeholder="Enter your email..."
+                        placeholder="email"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
                     <Form.Control
                         className="mt-3"
-                        placeholder="Enter your password..."
+                        placeholder="password"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         type="password"
@@ -58,18 +62,28 @@ const AuthPage = () => {
                     <Row className="d-flex justify-content-between mt-3 pl-3 pr-3">
                         {isLogin ?
                             <div>
-                                Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Register!</NavLink>
+                                <FormattedMessage id='auth.page.question.register' />
+                                <NavLink to={REGISTRATION_ROUTE}>
+                                    <FormattedMessage id='auth.page.question.register.link' />
+                                </NavLink>
                             </div>
                             :
                             <div>
-                                Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Enter!</NavLink>
+                                <FormattedMessage id='auth.page.question.enter' />
+                                <NavLink to={LOGIN_ROUTE}>
+                                    <FormattedMessage id='auth.page.question.enter.link' />
+                                </NavLink>
                             </div>
                         }
                         <Button
                             variant={"outline-success"}
                             onClick={click}
                         >
-                            {isLogin ? 'Войти' : 'Регистрация'}
+                            {
+                                isLogin
+                                    ? <FormattedMessage id='button.enter'/>
+                                    : <FormattedMessage id='auth.page.registration'/>
+                            }
                         </Button>
                     </Row>
                 </Form>

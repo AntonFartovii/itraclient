@@ -28,7 +28,7 @@ const ItemList = observer(({items = [],title}) => {
                                 ?   <tr>
                                         <td colSpan="6">
                                             <Alert key="info" variant="info">
-                                                Items not found
+                                                <FormattedMessage id='items.not.found' />
                                             </Alert>
                                         </td>
                                     </tr>
