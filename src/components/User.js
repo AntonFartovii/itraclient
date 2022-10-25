@@ -6,7 +6,7 @@ import AdminUser from "./modals/AdminUser";
 import UserBar from "./UserBar";
 import UserList from "./UserList";
 import NavLink from "react-bootstrap/NavLink";
-import {ADMIN_ROUTE, COLLECTION_PAGE_ROUTE} from "../utils/consts";
+import {ADMIN_ROUTE, COLLECTION_PAGE_ROUTE} from "../constants/consts";
 import {useNavigate} from 'react-router-dom'
 
 const User = (props) => {

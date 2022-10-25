@@ -2,6 +2,7 @@ import React from 'react';
 import Item from "./Item";
 import {observer} from "mobx-react-lite";
 import {Table, Alert} from "react-bootstrap";
+import { FormattedMessage } from 'react-intl'
 
 const ItemList = observer(({items = [],title}) => {
 
@@ -13,12 +14,12 @@ const ItemList = observer(({items = [],title}) => {
                     <Table striped bordered hover>
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>CreatedAt</th>
-                            <th>Name</th>
-                            <th>Collection name</th>
-                            <th>Author</th>
-                            <th>Toolbar</th>
+                            <th>№</th>
+                            <th><FormattedMessage id='app.table.created' /></th>
+                            <th><FormattedMessage id='app.table.name' /></th>
+                            <th><FormattedMessage id='app.table.collection.name' /></th>
+                            <th><FormattedMessage id='app.table.author' /></th>
+                            <th><FormattedMessage id='app.table.toolbar' /></th>
                         </tr>
                         </thead>
                         <tbody>

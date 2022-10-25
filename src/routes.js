@@ -5,7 +5,7 @@ import {
     MAIN_ROUTE,
     REGISTRATION_ROUTE,
     USER_ROUTE
-} from "./utils/consts";
+} from "./constants/consts";
 import AuthPage from "./pages/AuthPage";
 import AdminPage from "./pages/AdminPage";
 import Main from "./pages/MainPage";

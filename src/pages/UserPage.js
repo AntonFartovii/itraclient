@@ -1,18 +1,16 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Context} from "../index";
 import {useParams} from 'react-router-dom'
-import UserPageContent from "../components/UserPageContent";
 import {fetchUser} from "../http/userAPI";
 import UserCurrent from "../components/UserCurrent";
 import {Button, Container} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import {fetchCollections} from "../http/collectionAPI";
 import CollectionList from "../components/CollectionList";
-import data from "bootstrap/js/src/dom/data";
+import { FormattedMessage } from 'react-intl'
 
 const UserPage = observer(() => {
     const [author, setAuthor] = useState({})
-    // const [collections, setCollections] = useState([])
     const {user, collection} = useContext(Context)
     const {id} = useParams()
     const userId = id ? id : user.user.id
@@ -37,6 +35,7 @@ const UserPage = observer(() => {
             <CollectionList
                 collections={collection.collections}
                 userId={userId}
+                title={<FormattedMessage id='user.page.collections.title' />}
             />
             {/*<UserPageContent author={author}/>*/}
         </Container>

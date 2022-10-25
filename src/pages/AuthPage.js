@@ -2,12 +2,12 @@ import React, {useContext, useState} from 'react';
 import {Container, Form, Button} from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 import Row from "react-bootstrap/Row";
-import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts.js";
+import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../constants/consts.js";
 import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {login, registration} from "../http/userAPI.js";
 import {Context} from "../index.js";
-import {SHOP_ROUTE} from "../utils/consts.js";
-import {MAIN_ROUTE} from "../utils/consts";
+import {SHOP_ROUTE} from "../constants/consts.js";
+import {MAIN_ROUTE} from "../constants/consts";
 
 const AuthPage = () => {
     const {user} = useContext(Context)
