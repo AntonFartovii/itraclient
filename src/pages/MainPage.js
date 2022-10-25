@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Container, Row, Col} from "react-bootstrap";
+import React, {useContext, useEffect} from 'react';
+import {Container} from "react-bootstrap";
 import ItemList from "../components/ItemList";
 
 import {observer} from "mobx-react-lite";
