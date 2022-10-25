@@ -29,8 +29,17 @@ const Main = observer(() => {
 
     return (
         <Container>
-            <ItemList items = {item.items} title="List last items"/>
-            <CollectionList collections = {collection.collections} title="Biggest collection list"/>
+
+            <ItemList
+                items = {item.items}
+                title="List last items"
+            />
+
+            <CollectionList
+                collections = {collection.collections}
+                title="Biggest collection list"
+            />
+
         </Container>
     );
 });

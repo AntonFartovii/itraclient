@@ -1,16 +1,15 @@
 import React from 'react';
 import Item from "./Item";
 import {observer} from "mobx-react-lite";
-import {Table} from "react-bootstrap";
+import {Table, Alert} from "react-bootstrap";
 
 const ItemList = observer(({items = [],title}) => {
 
 
     return (
-            !items.length
-            ? <h1>Items not found</h1>
-            : <div>
-                    <h1>{title}</h1>
+
+            <div>
+                    <h2>{title}</h2>
                     <Table striped bordered hover>
                         <thead>
                         <tr>
@@ -24,9 +23,17 @@ const ItemList = observer(({items = [],title}) => {
                         </thead>
                         <tbody>
                         {
-                            items.map( (item, index) =>
-                                <Item item={item} index={index + 1} key={item.id}/>
-                            )
+                            !items.length
+                                ?   <tr>
+                                        <td colSpan="6">
+                                            <Alert key="info" variant="info">
+                                                Items not found
+                                            </Alert>
+                                        </td>
+                                    </tr>
+                                :   items.map( (item, index) =>
+                                        <Item item={item} index={index + 1} key={item.id}/>
+                                    )
                         }
                         </tbody>
                     </Table>

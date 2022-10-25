@@ -9,7 +9,7 @@ import {Context} from "../index.js";
 import {SHOP_ROUTE} from "../utils/consts.js";
 import {MAIN_ROUTE} from "../utils/consts";
 
-const Auth = () => {
+const AuthPage = () => {
     const {user} = useContext(Context)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -78,4 +78,4 @@ const Auth = () => {
     );
 };
 
-export default Auth;
+export default AuthPage;

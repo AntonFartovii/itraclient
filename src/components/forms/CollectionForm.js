@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
 import {Form} from "react-bootstrap";
 import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
 
-const CollectionForm = ({collection, setCollection}) => {
+const CollectionForm = observer(({collection, setCollection}) => {
 
 
 
@@ -37,6 +38,6 @@ const CollectionForm = ({collection, setCollection}) => {
             />
         </Form>
     );
-};
+});
 
 export default CollectionForm;

@@ -24,6 +24,9 @@ const Collection = ( props ) => {
                         </NavLink>
                     </td>
                     <td>
+                        {props.collection.userId}
+                    </td>
+                    <td>
                         {props.collection.count}
                     </td>
                     <td>

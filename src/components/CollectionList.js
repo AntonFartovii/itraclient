@@ -2,18 +2,27 @@ import React, {useContext, useState} from 'react';
 import Collection from "./Collection";
 import {Button, Table} from "react-bootstrap";
 import CreateCollection from "./modals/CreateCollection";
+import {Context} from "../index";
 
-const CollectionList = ({collections, title, userId}) => {
+const CollectionList = ({collections, title = 'Collections list', userId}) => {
     const [addVisible, setAddVisible] = useState(false)
-    title = title || 'Collections list'
+    const {user} = useContext(Context)
 
 
     return (
         <div>
-            <h1>{title}</h1>
-            <Button variant="primary" onClick={() => setAddVisible(true)}>
-                Create collection
-            </Button>
+            <h2>{title}</h2>
+            {
+                user.isAuth &&
+                    <Button
+                        className="mb-2"
+                        variant="primary"
+                        onClick={() => setAddVisible(true)}
+                    >
+                        Create collection
+                    </Button>
+            }
+
             <CreateCollection
                 userId={userId}
                 show={addVisible}
@@ -25,6 +34,7 @@ const CollectionList = ({collections, title, userId}) => {
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Author id</th>
                     <th>Items Count</th>
                     <th>Tool bar</th>
                 </tr>
