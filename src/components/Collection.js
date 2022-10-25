@@ -1,6 +1,4 @@
-import React, {useContext, useState} from 'react';
-import {Button, Row, Col} from "react-bootstrap";
-import DeleteCollection from "./modals/DeleteCollection";
+import React, {useContext} from 'react';
 import NavLink from 'react-bootstrap/NavLink';
 import {COLLECTION_PAGE_ROUTE} from "../constants/consts";
 import {useNavigate} from 'react-router-dom'

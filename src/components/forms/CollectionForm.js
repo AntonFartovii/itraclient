@@ -1,6 +1,5 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Form} from "react-bootstrap";
-import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 
 const CollectionForm = observer(({collection, setCollection}) => {

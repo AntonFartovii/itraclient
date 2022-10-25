@@ -1,7 +1,6 @@
 import React from 'react';
-import {Table, Container} from "react-bootstrap";
+import {Table} from "react-bootstrap";
 import User from "./User";
-import UserBar from "./UserBar";
 import { FormattedMessage } from 'react-intl'
 
 const UserList = ({users, title}) => {

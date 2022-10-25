@@ -4,13 +4,9 @@ import {Context} from "../index";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Stack from 'react-bootstrap/Stack';
 
 import {NavLink, useNavigate} from "react-router-dom";
 import {LOGIN_ROUTE, MAIN_ROUTE} from "../constants/consts";

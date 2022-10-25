@@ -56,7 +56,6 @@ const App = observer( () => {
                 </div>
             </ThemeProvider>
         </IntlProvider>
-
     );
 })
 

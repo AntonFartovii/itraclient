@@ -3,7 +3,7 @@ import {Context} from "../index";
 import {useParams} from 'react-router-dom'
 import {fetchUser} from "../http/userAPI";
 import UserCurrent from "../components/UserCurrent";
-import {Button, Container} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import {fetchCollections} from "../http/collectionAPI";
 import CollectionList from "../components/CollectionList";
@@ -15,8 +15,6 @@ const UserPage = observer(() => {
     const {id} = useParams()
     const userId = id ? id : user.user.id
 
-
-
     useEffect(() => {
         fetchUser(userId).then(data => setAuthor(data))
     }, [])
@@ -25,8 +23,8 @@ const UserPage = observer(() => {
         fetchCollections(userId, 10).then(data => collection.setCollections(data.rows))
     },[])
 
-    if (id & !user.isAdmin) {
-        return (<h1>У вас нет прав</h1>);
+    if (id && !user.isAdmin) {
+        return (<h1><FormattedMessage id='permission.message' /></h1>);
     }
 
     return (
@@ -37,7 +35,6 @@ const UserPage = observer(() => {
                 userId={userId}
                 title={<FormattedMessage id='user.page.collections.title' />}
             />
-            {/*<UserPageContent author={author}/>*/}
         </Container>
     )
 });

@@ -37,6 +37,7 @@
   "collections.not.found": "Collections not found",
   "tags.not.found": "Tags not found",
   "comments.not.found": "Comments not found",
+  "permission.message": "You do not have permission",
   "props.not.found": "Properties not fount",
   "auth.page.authorization": "Authorization",
   "auth.page.email.placeholder": "Enter your email",

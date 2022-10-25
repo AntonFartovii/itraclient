@@ -38,6 +38,7 @@
   "collections.not.found": "Коллекции не найдены",
   "tags.not.found": "Тэги не найдены",
   "comments.not.found": "Комментарии не найдены",
+  "permission.message": "У вас нет прав",
   "props.not.found": "Свойства не найдены",
   "auth.page.authorization": "Авторизация",
   "auth.page.email.placeholder": "Введите ваш email",
