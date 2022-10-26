@@ -6,6 +6,7 @@ import {useContext, useEffect, useState} from "react";
 import {check} from "./http/userAPI";
 import {Spinner, ThemeProvider} from "react-bootstrap";
 import {Context} from "./index";
+import {observer} from "mobx-react-lite";
 import localStorageKeys from "./constants/localStorageKeys";
 import locales from "./constants/locales";
 import { IntlProvider } from "react-intl";
@@ -22,7 +23,7 @@ const messages = {
     [locales.RU]: ruMessages,
 };
 
-const App = () => {
+const App = observer( () => {
     const {user, localization} = useContext(Context)
     const [loading, setLoading] = useState(true)
 
@@ -56,6 +57,6 @@ const App = () => {
             </ThemeProvider>
         </IntlProvider>
     );
-};
+})
 
 export default App;
