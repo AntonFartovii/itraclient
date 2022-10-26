@@ -33,18 +33,18 @@ const ItemPage = observer (() => {
         })
     },[])
 
-    useEffect(() => {
-        fetchComments(null, id, 100).then( data => {
-            setComments(data)
-            setAddedComment(false)
-        })
-    }, [comments])
-
-    useEffect(() => {
-        fetchTags(50).then(data => {
-            setTags(data)
-        })
-    },[])
+    // useEffect(() => {
+    //     fetchComments(null, id, 100).then( data => {
+    //         setComments(data)
+    //         setAddedComment(false)
+    //     })
+    // }, [comments])
+    //
+    // useEffect(() => {
+    //     fetchTags(50).then(data => {
+    //         setTags(data)
+    //     })
+    // },[])
 
     const addComment = () => {
         if (value) {
@@ -113,7 +113,9 @@ const ItemPage = observer (() => {
                     <Card.Title></Card.Title>
                     <Card.Text>
                         {
-                            tags.map( tag => <Button>{tag.name}</Button>)
+                            !item.tags
+                                ? ''
+                                : item.tags.map( tag => <Button>{tag.name}</Button>)
                         }
                     </Card.Text>
                 </Card.Body>
