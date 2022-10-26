@@ -34,7 +34,9 @@ const NavBar = observer(() => {
                                     <FormattedMessage id='app.name' />
                                 </NavLink>
                             </Navbar.Brand>
-
+                            <Nav.Item>
+                                <Nav.Link href="/tag">Tags</Nav.Link>
+                            </Nav.Item>
                             <Form className="d-flex">
                                 <Form.Control
                                     type="search"
@@ -58,7 +60,7 @@ const NavBar = observer(() => {
                                     </Offcanvas.Title>
                                 </Offcanvas.Header>
                                 <Offcanvas.Body>
-                                                      {   user.isAuth
+                                        {   user.isAuth
                                             ? <Nav className="justify-content-end flex-grow-1 pe-3">
                                                 <Button
                                                     onClick={() => navigate(USER_ROUTE)}
