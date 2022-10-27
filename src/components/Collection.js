@@ -13,6 +13,8 @@ const Collection = ( props ) => {
 
     const navigate = useNavigate()
 
+    console.log( props.collection )
+
     return (
 
                 <tr>
@@ -25,7 +27,7 @@ const Collection = ( props ) => {
                         </NavLink>
                     </td>
                     <td>
-                        {props.collection.user.email && props.collection.user.email}
+                        {props.collection.userId}
                     </td>
                     <td>
                         {props.collection.count}
