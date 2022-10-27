@@ -9,7 +9,6 @@ import ItemBar from "./ItemBar";
 const Collection = ( props ) => {
     const {user} = useContext(Context)
     const id = props.collection.id
-    const author = props.collection.user.email
 
     const navigate = useNavigate()
 
@@ -27,7 +26,10 @@ const Collection = ( props ) => {
                         </NavLink>
                     </td>
                     <td>
-                        {props.collection.userId}
+                        {   props.collection.user.email
+                                ? props.collection.user.email
+                                : props.collection.userId
+                        }
                     </td>
                     <td>
                         {props.collection.count}
