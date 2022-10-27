@@ -7,18 +7,13 @@ import CreateTag from "../components/modals/CreateTag";
 import {observer} from "mobx-react-lite";
 import {TAG_ROUTE, USER_ROUTE} from "../constants/consts";
 import {useNavigate} from 'react-router-dom'
+import TagCloud from "../components/TagCloud";
 
 const TagsPage = observer(() => {
     const [addVisible, setAddVisible] = useState(false)
-    const {tag} = useContext(Context)
-    const navigate = useNavigate()
 
-    useEffect(() => {
-        fetchTags(100). then(data => {
-            tag.setTags( data )
-            console.log( data )
-        })
-    }, [])
+
+
 
     return (
         <Container>
@@ -34,26 +29,8 @@ const TagsPage = observer(() => {
                     show={addVisible}
                     onHide={ () => setAddVisible(false)}
                 />
-                <Card body>
-                    {
-                        !tag.tags.length
-                            ? ''
-                            : tag.tags.map( tag =>
-                                <Badge
-                                    onClick={() => navigate(TAG_ROUTE + '/' + tag.id)}
-                                    className="mx-3"
-                                    pill
-                                    bg="warning"
-                                    key={tag.id}
-                                    text="dark"
-                                >
-                                    {tag.name}
-                                </Badge>
-                            )
-                    }
-                </Card>
 
-
+                <TagCloud/>
 
         </Container>
     );

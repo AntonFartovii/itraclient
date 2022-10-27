@@ -3,14 +3,18 @@ import Modal from "react-bootstrap/Modal";
 import {Button, Form} from "react-bootstrap";
 import {Context} from "../../index";
 import {createProp} from "../../http/propAPI";
+import props from "../../constants/props";
 
 const CreateProp = ({show, onHide, collectionId}) => {
-    const [name, setName] = useState('')
     const {collection} = useContext(Context)
 
+    const [name, setName] = useState('')
+    const [type, setType] = useState(props[0].type)
+
     const click = () => {
-        createProp({name, collectionId}).then( data => {
+        createProp({name, type, collectionId}).then( data => {
             setName('')
+            console.log( data )
             onHide()
             collection.setRefresh(true)
         })
@@ -30,6 +34,21 @@ const CreateProp = ({show, onHide, collectionId}) => {
 
             <Modal.Body>
                 <Form>
+                    <Form.Select
+                        style={{width:'130px'}}
+                        onChange={e => setType(e.target.value)}
+                        defaultValue={type}
+                    >
+                        {
+                            !props
+                            ? ''
+                                : props.map( prop =>
+                                    <option value={prop.type} key={prop.id}>{prop.type}</option>
+                                )
+                        }
+
+                    </Form.Select>
+
                     <Form.Control
                         value={name}
                         onChange={e => setName(e.target.value)}
