@@ -26,7 +26,7 @@ const Collection = ( props ) => {
                         </NavLink>
                     </td>
                     <td>
-                        {   props.collection.user.email
+                        {   props.collection.user
                                 ? props.collection.user.email
                                 : props.collection.userId
                         }
