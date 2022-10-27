@@ -25,7 +25,7 @@ const Collection = ( props ) => {
                         </NavLink>
                     </td>
                     <td>
-                        {author}
+                        {props.collection.user && props.collection.user.email}
                     </td>
                     <td>
                         {props.collection.count}
