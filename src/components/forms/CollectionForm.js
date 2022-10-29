@@ -33,7 +33,8 @@ const CollectionForm = observer(({collection, setCollection}) => {
             <Form.Control
                 onChange={(e) => {
                 setFile(e.target.files[0])
-                setCollection({...collection, file})
+                    console.log(e.target.files[0])
+                setCollection({...collection, file: e.target.files[0]})
             }}
                 className="mt-3"
                 type="file"

@@ -4,6 +4,7 @@ import {$authHost, $host} from "./index";
 
 export const createCollection = async (collection) => {
 
+    console.log( 'collectionAPI', collection)
     let formData = new FormData()
     formData.append('name', collection.name)
     formData.append('theme', collection.theme)
