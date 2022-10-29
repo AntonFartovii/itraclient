@@ -26,6 +26,7 @@ const CollectionPage = observer(() => {
     useEffect(() => {
         fetchOneCollection(id).then(data => {
             setCollection(data)
+
         })
     }, [])
 
@@ -47,6 +48,8 @@ const CollectionPage = observer(() => {
         obj[prop.type] = obj[prop.type] ? obj[prop.type] + 1 : 1
     })
 
+    console.log( collection)
+
     return (
         <Container>
             <ItemFilter filter={filter} setFilter={setFilter}></ItemFilter>
@@ -64,6 +67,10 @@ const CollectionPage = observer(() => {
 
             <Card className="mb-2 mt-2">
                 <Card.Header><h3>{collection.name}</h3></Card.Header>
+                <Card.Img
+                    variant="top"
+                    src={process.env.REACT_APP_API_URL + '/' + collection.img}
+                />
                 <Card.Body>
                     <Card.Title>Markdown to html description:</Card.Title>
                     <Markdown source={collection.description} />
