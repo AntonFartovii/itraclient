@@ -22,6 +22,7 @@ const NavBar = observer(() => {
 
     const logout = () => {
         user.setIsAuth(false)
+        user.setIsAuthor(false)
         user.setUser({})
         navigate(LOGIN_ROUTE)
         localStorage.removeItem('token')

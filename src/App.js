@@ -1,10 +1,10 @@
 
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, Link, Route} from 'react-router-dom'
 import AppRouter from "./components/AppRouter";
 import NavBar from "./components/NavBar";
 import {useContext, useEffect, useState} from "react";
 import {check} from "./http/userAPI";
-import {Spinner, ThemeProvider} from "react-bootstrap";
+import {Spinner, ThemeProvider, Breadcrumb} from "react-bootstrap";
 import {Context} from "./index";
 import {observer} from "mobx-react-lite";
 import localStorageKeys from "./constants/localStorageKeys";
@@ -39,7 +39,11 @@ const App = observer( () => {
         }).finally(() => setLoading(false))
     }, [])
 
+
+
+
     if (loading) return <Spinner animation={"grow"}/>;
+
 
     return (
         <IntlProvider locale={localization.localization} messages={messages[localization.localization]}>

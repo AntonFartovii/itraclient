@@ -3,7 +3,16 @@ import {$authHost, $host} from "./index";
 
 
 export const createCollection = async (collection) => {
-    const {data} = await $authHost.post('api/collection/', collection)
+
+    let formData = new FormData()
+    formData.append('name', collection.name)
+    formData.append('theme', collection.theme)
+    formData.append('img', collection.file)
+    formData.append('description', collection.description)
+    formData.append('userId', collection.userId)
+
+
+    const {data} = await $authHost.post('api/collection/', formData)
     return data
 }
 

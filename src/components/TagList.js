@@ -12,13 +12,14 @@ const TagList = ({tags}) => {
                 !tags
                     ? ''
                     : tags.map( tag =>
-                        <Badge link
-                               onClick={() => navigate(TAG_ROUTE + '/' + tag.id)}
-                               className="mx-3"
-                               pill
-                               bg="warning"
-                               key={tag.id}
-                               text="dark"
+                        <Badge
+                            onClick={() => navigate(TAG_ROUTE + '/' + tag.id)}
+                            className="mx-3"
+                            style={{cursor: "pointer"}}
+                            pill
+                            bg="warning"
+                            key={tag.id}
+                            text="dark"
                         >
                             {tag.name}
                         </Badge>

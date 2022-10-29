@@ -26,7 +26,11 @@ export const fetchOneItem = async (id) => {
         console.log( e )
         return e
     }
+}
 
+export const editItem = async ( item ) => {
+    const {data} = await $authHost.put('api/item/', item)
+    return data
 }
 
 export const deleteItem = async (id) => {
