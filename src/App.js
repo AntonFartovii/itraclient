@@ -11,10 +11,13 @@ import localStorageKeys from "./constants/localStorageKeys";
 import locales from "./constants/locales";
 import { IntlProvider } from "react-intl";
 
+import Container from 'react-bootstrap/Container';
 import enMessages from "./localizations/en.json";
 import plMessages from "./localizations/pl.json";
 import esMessages from "./localizations/es.json";
 import ruMessages from "./localizations/ru.json";
+import Header from "./common/Header";
+import Content from "./common/Content";
 
 const messages = {
     [locales.EN]: enMessages,
@@ -46,6 +49,7 @@ const App = observer( () => {
 
 
     return (
+
         <IntlProvider locale={localization.localization} messages={messages[localization.localization]}>
             <ThemeProvider
                 breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
@@ -53,8 +57,17 @@ const App = observer( () => {
             >
                 <div className="App">
                     <BrowserRouter>
-                        <NavBar/>
-                        <AppRouter/>
+                        <Container fluid>
+                            <Container  className="mb-3">
+                                <Header/>
+                            </Container>
+                            <Container fluid="sm">
+                                <Content>
+                                    <AppRouter/>
+                                </Content>
+                            </Container>
+                        </Container>
+
                     </BrowserRouter>
                 </div>
             </ThemeProvider>

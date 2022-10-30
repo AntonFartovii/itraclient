@@ -14,7 +14,7 @@ const Collection = observer(( props ) => {
 
     const navigate = useNavigate()
 
-    console.log( new Proxy(collection, {}))
+    // console.log( new Proxy(collection, {}))
 
     return (
                 <tr>
@@ -39,7 +39,7 @@ const Collection = observer(( props ) => {
                         window.location.pathname !== '/'
                         && <td>
                             {
-                                (user.isAdmin || user.user.id === id)
+                                (user.isAdmin || user.user.id === collection.userId)
                                     ? <CollectionBar
                                         id={id}
                                         collection={collection}

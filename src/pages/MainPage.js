@@ -33,7 +33,7 @@ const Main = observer(() => {
     if (loading) return <Spinner animation={"grow"}/>;
 
     return (
-        <Container>
+        <div>
             <TagCloud/>
             <ItemList
                 items = {item.items}
@@ -46,7 +46,7 @@ const Main = observer(() => {
                 title={<FormattedMessage id='app.main.list.collections' />}
                 userId={user.user.id}
             />
-        </Container>
+        </div>
     );
 });
 

@@ -13,8 +13,8 @@ export const fetchItems = async (userId, collectionId, limit, sort = "") => {
     return data
 }
 
-export const itemAddTag = async ({itemId, tagId}) => {
-    const {data} = await $host.post('api/item/tag', {itemId, tagId})
+export const itemAddTag = async (itemId, tagName) => {
+    const {data} = await $host.post('api/item/tag', {itemId, tagName})
     return data
 }
 

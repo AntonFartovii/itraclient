@@ -5,19 +5,17 @@ import {createPropValue} from "../../http/propAPI";
 
 const CreatePropValue = ({show, onHide, itemId, create, prop = {}}) => {
 
+    const init = prop.values[0] && prop.values[0][prop.type] || ''
     const [value, setValue] = useState(prop.values[0] && prop.values[0][prop.type])
 
     const changeBox = (e) => {
-            //
-            // console.log('e.target.checked: ', e.target.checked)
             setValue(value => !value)
-            // console.log('value: ', value)
             console.log('value: ', value)
     }
 
     const click = () => {
 
-        if( itemId && prop.id && prop.type && value ) {
+        if( itemId && prop.id && prop.type) {
             createPropValue(
                 {itemId, propId: prop.id, type: prop.type, value}
                 ).then( data => {
@@ -61,7 +59,6 @@ const CreatePropValue = ({show, onHide, itemId, create, prop = {}}) => {
                             as="input"
                             rows={3}
                             value={value}
-                            defaultValue="123123"
                             onChange={e => setValue(e.target.value)}
                         />
                     }

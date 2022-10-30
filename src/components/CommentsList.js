@@ -4,8 +4,9 @@ import {Alert, Button, Form} from "react-bootstrap";
 import {FormattedMessage} from "react-intl";
 import {createComment} from "../http/commentAPI";
 import {Context} from "../index";
+import {observer} from "mobx-react-lite";
 
-const CommentsList = ({comments = [], create, userId, itemId, user}) => {
+const CommentsList = observer(({comments = [], create, userId, itemId, user}) => {
     const [value, setValue] = useState('')
 
     const addComment = () => {
@@ -52,6 +53,6 @@ const CommentsList = ({comments = [], create, userId, itemId, user}) => {
 
         </div>
     );
-};
+});
 
 export default CommentsList;

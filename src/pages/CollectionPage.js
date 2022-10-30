@@ -7,7 +7,6 @@ import {fetchOneCollection} from "../http/collectionAPI";
 import {fetchItems} from "../http/itemAPI";
 import ItemFilter from "../components/ItemFilter";
 import {useItems} from "../components/hooks/useItems";
-import {useFetching} from "../components/hooks/useFetching";
 import CollectionBar from "../components/CollectionBar";
 import {observer} from "mobx-react-lite";
 import Markdown from "react-remarkable";
@@ -16,45 +15,40 @@ import props from "../constants/props";
 const CollectionPage = observer(() => {
     const {user} = useContext(Context)
 
+    const [selectedSort, setSelectedSort] = useState('')
     const [collection, setCollection] = useState({})
-
     const [items, setItems] = useState([])
-    const [filter, setFilter] = useState({sort: '', query: ''})
-
+    const [isLoading, setIsLoading] = useState(false)
     const {id} = useParams()
 
     useEffect(() => {
         fetchOneCollection(id).then(data => {
             setCollection(data)
-
         })
     }, [])
 
-    const [fetchData, isItemsLoading, itemError] = useFetching(async () => {
-        const data = await fetchItems(null, id)
-        setItems(data.rows)
-    })
-
-
-
     useEffect( () => {
-        fetchData()
-    }, [filter])
-
-    const sortedAndSearchedItems = useItems(items, filter.sort, filter.query)
+        fetchItems(null, id).then( data => {
+            setItems(data.rows)
+        }).finally(() => setIsLoading(false))
+    }, [])
 
     let obj = {}
     collection.props && collection.props.forEach( prop => {
         obj[prop.type] = obj[prop.type] ? obj[prop.type] + 1 : 1
     })
 
-    console.log( collection)
+    const sortItems = (event) => {
+        const sort = event.target.value
+        setSelectedSort(sort)
+        console.log( event.target.value )
+        setItems([...items].sort( (a, b) => a[sort].localeCompare(b[sort])))
+
+    }
+
 
     return (
         <Container>
-            <ItemFilter filter={filter} setFilter={setFilter}></ItemFilter>
-            <hr style={{margin: '15px 0'}}/>
-
             {
                 (user.user.id === collection.userId || user.isAdmin)
                 && <CollectionBar
@@ -64,15 +58,17 @@ const CollectionPage = observer(() => {
                 />
             }
 
-
             <Card className="mb-2 mt-2">
-                <Card.Header><h3>{collection.name}</h3></Card.Header>
+                <Card.Header>
+                    <Card.Title>{collection.name}</Card.Title>
+                    <Card.Subtitle>{collection.theme}</Card.Subtitle>
+                </Card.Header>
                 <Card.Img
                     variant="top"
                     src={process.env.REACT_APP_API_URL + '/' + collection.img}
                 />
                 <Card.Body>
-                    <Card.Title>Markdown to html description:</Card.Title>
+                    <Card.Title>Description (Markdown):</Card.Title>
                     <Markdown source={collection.description} />
                 </Card.Body>
             </Card>
@@ -106,13 +102,20 @@ const CollectionPage = observer(() => {
                 </Card.Footer>
             </Card>
 
+            <div>
+                <select
+                    value={selectedSort}
+                    onChange={sortItems}>
+                    <option disabled value=""></option>
+                    <option key={"sort_name"} value="name">По названию</option>
+                    <option key={"sort_id"} value="createdAt">По дата создания</option>
+                </select>
+            </div>
+
             {
-                itemError && <h1>Произошла ошибка</h1>
-            }
-            {
-                isItemsLoading
+                isLoading
                 ?   <Spinner animation="border" size="sm" />
-                :   <ItemList key={collection.id} items={sortedAndSearchedItems}></ItemList>
+                :   <ItemList key={collection.id} items={items}></ItemList>
             }
         </Container>
     );

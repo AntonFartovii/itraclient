@@ -4,14 +4,19 @@ export default class ItemStore{
     constructor() {
         this._items = []
         this._item = {}
+        this._comments = []
         this._limit = 5
         this._totalCount = 0
         this._refresh = false
-        makeAutoObservable( this )
+        makeAutoObservable( this, {})
     }
 
     setItems(items) {
         this._items = items
+    }
+
+    setComments(comments) {
+        this._comments = comments
     }
 
 
@@ -46,5 +51,9 @@ export default class ItemStore{
 
     get totalCount() {
         return this._totalCount
+    }
+
+    get comments() {
+        return this._comments
     }
 }

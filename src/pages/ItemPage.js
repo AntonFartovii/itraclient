@@ -7,53 +7,57 @@ import {Context} from "../index";
 import PropsList from "../components/PropsList";
 import TagsList from "../components/TagsList";
 import LikeList from "../components/LikeList";
+import {observer} from "mobx-react-lite";
 
-const ItemPage = () => {
+const ItemPage = observer(() => {
+    const {item, user} = useContext(Context)
 
     const {id} = useParams()
     const [loading, setLoading] = useState(true)
-    const {user} = useContext(Context)
-    const [item, setItem] = useState({})
 
     useEffect(() => {
        fetchOneItem(id)
            .then(data => {
-                console.log( data )
-                setItem(data)
+                item.setItem(data)
+               console.log( data)
             })
            .finally(() => {
-                   setLoading(false)
+               setLoading(false)
            })
     },[])
 
     const createComment = (newComment) => {
-        const comments = [...item.comments, newComment]
-        setItem({...item, comments})
+        const comments = [...item.item.comments, newComment]
+        item.setItem({...item.item, comments})
     }
 
-
+    const addTag = (newTags) => {
+        item.setItem({...item.item, tags: newTags})
+    }
 
     if (loading) return <Spinner animation={"grow"}/>;
 
     return (
-        <Container>
+        <div>
 
             <LikeList
                 user={user}
                 itemId={id}
-                item={item}
+                item={item.item}
             />
 
             <TagsList
                 user={user}
                 key={'tag'+id}
-                item={item}
+                itemId={id}
+                item={item.item}
+                create={addTag}
             />
 
             <PropsList
                 user={user}
                 key={'prop'+id}
-                collectionId={item.collectionId}
+                collectionId={item.item.collectionId}
                 itemId={id}
             />
 
@@ -62,12 +66,12 @@ const ItemPage = () => {
                 key={'comment'+id}
                 userId={user.user.id}
                 itemId={id}
-                comments={item.comments}
+                comments={item.item.comments}
                 create={createComment}
             />
 
-        </Container>
+        </div>
     );
-};
+});
 
 export default ItemPage;

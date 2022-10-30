@@ -18,7 +18,7 @@ const PropsList = ({collectionId, itemId, user}) => {
         })
     }, [])
 
-    console.log(collectionProps)
+    // console.log(collectionProps)
 
     return (
         <Accordion className="mb-3" defaultActiveKey={['0']} alwaysOpen>

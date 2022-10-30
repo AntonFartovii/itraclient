@@ -33,7 +33,7 @@ const UserPage = observer(() => {
     }
 
     return (
-        <Container>
+        <div>
 
             <UserCurrent user={author}/>
 
@@ -44,7 +44,7 @@ const UserPage = observer(() => {
                 title={<FormattedMessage id='user.page.collections.title' />}
             />
 
-        </Container>
+        </div>
     )
 });
 
