@@ -74,7 +74,9 @@ const NavBar = observer(() => {
                                         {   user.isAuth
                                             ? <Nav className="justify-content-end flex-grow-1 pe-3">
                                                 <Nav.Item>
-                                                    <Nav.Link href={TAG_ROUTE}>Tags</Nav.Link>
+                                                    <Nav.Link href={TAG_ROUTE}>
+                                                        <FormattedMessage id='button.tags' />
+                                                    </Nav.Link>
                                                 </Nav.Item>
                                                 <Nav.Item>
                                                     <Nav.Link href={USER_ROUTE}>
@@ -134,9 +136,14 @@ const NavBar = observer(() => {
                         </Form>
                     </Row>
                     <Row style={{position:'relative'}}>
-                        <ToastContainer position="top-start">
+                        <ToastContainer
+                            style={{width: '100%'}}
+                            position="top-start">
                             <Toast
-                                onClose={toggleShowB} show={showB} animation={false}>
+                                onClose={toggleShowB}
+                                show={showB} animation={false}
+                                style={{width: '100%'}}
+                            >
                                 <Toast.Header>
                                     <img
                                         src="holder.js/20x20?text=%20"
@@ -147,7 +154,7 @@ const NavBar = observer(() => {
                                     <small></small>
                                 </Toast.Header>
                                 <Toast.Body>
-                                    <Nav className="justify-content-end flex-grow-1 pe-3">
+                                    <Nav className="justify-content-start flex-grow-1 pe-3">
                                         <ListGroup variant="flush">
                                         {
 
