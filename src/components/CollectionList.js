@@ -36,7 +36,7 @@ const CollectionList = observer(({ collections, setCollections, title = 'Collect
                 onHide={() => setAddVisible(false)}
             />
 
-            <Table striped bordered hover>
+            <Table responsive="lg" striped bordered hover>
                 <thead>
                 <tr>
                     <th>№</th>

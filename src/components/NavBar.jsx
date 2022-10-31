@@ -151,7 +151,9 @@ const NavBar = observer(() => {
                                         <ListGroup variant="flush">
                                         {
 
-                                            searchedItems.map( item =>
+                                            !searchedItems
+                                            ?   ''
+                                            :   searchedItems.map( item =>
                                                 <Nav.Link
                                                     key={item.id}
                                                     href={ITEM_ROUTE + '/' + item.id}
