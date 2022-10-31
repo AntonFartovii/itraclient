@@ -71,13 +71,15 @@ const NavBar = observer(() => {
                                     </Offcanvas.Title>
                                 </Offcanvas.Header>
                                 <Offcanvas.Body>
-                                        {   user.isAuth
-                                            ? <Nav className="justify-content-end flex-grow-1 pe-3">
-                                                <Nav.Item>
-                                                    <Nav.Link href={TAG_ROUTE}>
-                                                        <FormattedMessage id='button.tags' />
-                                                    </Nav.Link>
-                                                </Nav.Item>
+                                    <Nav className="justify-content-end flex-grow-1 pe-3">
+                                        <Nav.Item>
+                                            <Nav.Link href={TAG_ROUTE}>
+                                                <FormattedMessage id='button.tags' />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        {
+                                            user.isAuth
+                                            ?   <>
                                                 <Nav.Item>
                                                     <Nav.Link href={USER_ROUTE}>
                                                         <FormattedMessage id='app.header.menu.user' />
@@ -94,7 +96,7 @@ const NavBar = observer(() => {
                                                     </Nav.Link>
                                                 </Nav.Item>
                                                 <Nav.Item>
-                                                    <Nav.Link>
+                                                    <Nav.Link href={LOGIN_ROUTE}>
                                                         <Button
                                                             onClick={() => logout()}
                                                             variant="danger"
@@ -104,8 +106,8 @@ const NavBar = observer(() => {
                                                         </Button>
                                                     </Nav.Link>
                                                 </Nav.Item>
-                                            </Nav>
-                                            : <Nav className="justify-content-end flex-grow-1 pe-3">
+                                                </>
+                                            :
                                                 <Nav.Item>
                                                     <Nav.Link href={LOGIN_ROUTE}>
                                                         <Button
@@ -116,9 +118,9 @@ const NavBar = observer(() => {
                                                         </Button>
                                                     </Nav.Link>
                                                 </Nav.Item>
-                                            </Nav>
-                                    }
 
+                                        }
+                                    </Nav>
                                 </Offcanvas.Body>
                             </Navbar.Offcanvas>
                     </Navbar>
